@@ -44,3 +44,9 @@
 .App > .nav {
   /*max-width: 50%;*/
 }
+
+.close-btn {
+  width: fit-content;
+  margin-left: 5px;
+  mnargin-right: 5px;
+}

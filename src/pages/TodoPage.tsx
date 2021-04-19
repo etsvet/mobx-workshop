@@ -1,7 +1,10 @@
 import React from 'react';
+import FormControl from 'react-bootstrap/FormControl';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Button from 'react-bootstrap/Button';
 
 import {TodoList} from '../components/TodoList';
-
+import './TodoPage.css';
 
 const fakeTodos = {
   list: [
@@ -22,7 +25,15 @@ const fakeTodos = {
 
 export const TodoPage = () => {
   return (
-      <div>
+      <div className="todo-page">
+        <InputGroup className="mb-3">
+          <FormControl
+            placeholder="Add todo..."
+          />
+          <InputGroup.Append>
+            <Button variant="primary">Add</Button>
+          </InputGroup.Append>
+        </InputGroup>
         <TodoList todos={fakeTodos as any}/>
       </div>
   )
