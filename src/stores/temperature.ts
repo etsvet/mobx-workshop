@@ -10,8 +10,8 @@ export class Temperature {
 
   @observable weatherData:{temperature:number, location:string, description:string}[] = [
     {
-      temperature: 33,
-      location: 'Amsterdam, NL',
+      temperature: 15,
+      location: 'Berlin, DE',
       description: 'clear sky',
     }
   ];
@@ -39,18 +39,13 @@ export class Temperature {
   }
 
   @action setResponceData = (json: any) => {
-    // this.weatherData.unshift();
-
-    let newItem = {
+    this.weatherData.unshift({
       temperature: Number((json.main.temp - 273.15).toFixed()),
-      location: json.name,
+      location: json.name + ', ' + json.sys.country,
       description: json.weather[0].description,
-    }
+    });
 
-    this.weatherData = [newItem, ...this.weatherData];
     this.isLoading = false;
-
-    // this.weatherData.forEach(el => console.log(toJS(el)));
   };
 
   @action updateState() {

@@ -8,9 +8,33 @@
 .temperature-container {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+}
+
+
+.temperature-container  p {
+    margin: 0;
 }
 
 .temperature-container  span {
     font-size: 2.5rem;
+}
+
+.locations {
+    width: 50vw;
+    padding: 2.5rem 1rem;
+    border: 1px solid #1a1a1a;
+    border-radius: 10px;
+}
+
+.locations__list { 
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.locations__item { 
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #1a1a1a;
 }
