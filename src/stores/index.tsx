@@ -9,7 +9,7 @@ export * from './ui';
 
 export class App {
     public todos = new TodoList();
-    public temperature = new Temperature();
+    public temperature = new Temperature(this);
     public ui = new UI();
 }
 

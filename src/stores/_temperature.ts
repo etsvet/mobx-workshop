@@ -1,31 +1,25 @@
-import { makeAutoObservable, toJS } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 import { computed, action, observable, makeObservable } from 'mobx';
 import { AppStore } from './index';
 
 const API_KEY = '3c2f7ac196cb4e2195ec564b5a6000eb';
 
 export class Temperature {
+  @observable temperature: number = 33;
+  @observable location = 'Amsterdam, NL';
   @observable isLoading = false;
-  @observable searchQuery = '';
-
-  @observable weatherData:{temperature:number, location:string, description:string}[] = [
-    {
-      temperature: 33,
-      location: 'Amsterdam, NL',
-      description: 'clear sky',
-    }
-  ];
+  @observable description = 'clear sky';
 
   constructor(public parentStore: typeof AppStore) {
     makeAutoObservable(this);
   }
 
   @computed get temperatureF() {
-    return (this.weatherData[0].temperature * 9) / 5 + 32;
+    return (this.temperature * 9) / 5 + 32;
   }
 
   getWeatherData() {
-    const URL = `http://api.openweathermap.org/data/2.5/weather?q=${this.searchQuery}&appid=${API_KEY}`;
+    const URL = `http://api.openweathermap.org/data/2.5/weather?q=${this.location}&appid=${API_KEY}`;
 
     const requestOptions: RequestInit = {
       method: 'GET',
@@ -39,23 +33,14 @@ export class Temperature {
   }
 
   @action setResponceData = (json: any) => {
-    // this.weatherData.unshift();
-
-    let newItem = {
-      temperature: Number((json.main.temp - 273.15).toFixed()),
-      location: json.name,
-      description: json.weather[0].description,
-    }
-
-    this.weatherData = [newItem, ...this.weatherData];
+    this.temperature = Number((json.main.temp - 273.15).toFixed()); //responce is in Kelvin
+    this.description = json.weather[0].description;
     this.isLoading = false;
-
-    // this.weatherData.forEach(el => console.log(toJS(el)));
   };
 
   @action updateState() {
     this.isLoading = true;
-    this.searchQuery = this.parentStore.ui.input;
+    this.location = this.parentStore.ui.input;
     this.parentStore.ui.input = '';
   }
 
