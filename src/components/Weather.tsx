@@ -14,11 +14,6 @@ export const WeatherComponent = observer(() => {
   const store = React.useContext(storeContext);
 
   const weatherStore = store.temperature;
-  const UIStore = store.ui;
-
-  function changeInput(newInput: string) {
-    UIStore.locationInput = newInput;
-  }
 
   return (
       <div className="weather-container">
