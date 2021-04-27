@@ -1,15 +1,16 @@
-import { makeAutoObservable, observable } from 'mobx';
+import {  } from 'mobx';
 
 
 export class UI {
-  @observable locationInput: string = '';
-  @observable locationFetchError: string | null = null;
+  locationInput: string = '';
+  locationFetchError: string | null = null;
 
   handleInputChange = (value: string) => {
     this.locationInput = value;
   }
 
   constructor() {
-    makeAutoObservable(this);
+    // you may need this:
+    // makeAutoObservable(this);
   }
 }

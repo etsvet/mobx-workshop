@@ -1,4 +1,4 @@
-import { observer } from 'mobx-react';
+import { } from 'mobx-react';
 import React from 'react';
 
 import { storeContext } from '../App';
@@ -8,7 +8,7 @@ import { LocationLoader } from './LocationLoader';
 
 import './Weather.css';
 
-export const WeatherComponent = observer(() => {
+export const WeatherComponent = () => {
   const store = React.useContext(storeContext);
 
   const weatherStore = store.temperature;
@@ -22,4 +22,4 @@ export const WeatherComponent = observer(() => {
         }
       </div>
   );
-});
+};

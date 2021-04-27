@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { observer } from 'mobx-react';
+import { } from 'mobx-react';
 import {Button, Spinner} from "react-bootstrap";
 import {storeContext} from "../App";
 
 
-export const LocationLoader = observer(() => {
+export const LocationLoader = () => {
   const store = useContext(storeContext);
 
   return (
@@ -48,4 +48,4 @@ export const LocationLoader = observer(() => {
       </div>
     </div>
   )
-})
+}

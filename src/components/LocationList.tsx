@@ -1,5 +1,5 @@
 import React from "react";
-import {observer} from "mobx-react";
+import { } from "mobx-react";
 import {Button, ButtonGroup} from "react-bootstrap";
 
 import type {LocationWeatherData} from '../stores/locationWeatherData';
@@ -12,7 +12,7 @@ interface LocationListProps {
   locations: LocationWeatherData[];
 }
 
-export const LocationList = observer(({ locations }: LocationListProps) => {
+export const LocationList = ({ locations }: LocationListProps) => {
   const app = React.useContext(storeContext);
   const globalMode = app.temperature.globalMode;
 
@@ -39,4 +39,4 @@ export const LocationList = observer(({ locations }: LocationListProps) => {
         </section>
       </div>
   )
-})
+}

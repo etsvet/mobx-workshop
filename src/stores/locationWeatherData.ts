@@ -1,4 +1,4 @@
-import {action, computed, makeAutoObservable, observable} from 'mobx';
+import {  } from 'mobx';
 import type { Temperature } from './temperature';
 import { TemperatureScale } from "./types";
 
@@ -11,24 +11,24 @@ export interface WeatherData {
 }
 
 export class LocationWeatherData implements WeatherData {
-  @observable location: string;
-  @observable temperature: number;
-  @observable description: string;
-  @observable displayScale: TemperatureScale;
-  @observable isLoading: boolean = false;
+  location: string;
+  temperature: number;
+  description: string;
+  displayScale: TemperatureScale;
+  isLoading: boolean = false;
 
   constructor(data: WeatherData, parent: Temperature) {
-    makeAutoObservable(this);
+    // you may need this:
+    // makeAutoObservable(this);
     this.location = data.location;
     this.temperature = data.temperature;
     this.description = data.description;
     this.displayScale = TemperatureScale.C;
   }
 
-  @action
   public setDisplayScale = (displayScale: TemperatureScale) => this.displayScale = displayScale;
 
-  @computed get tempInF(): number {
+  get tempInF(): number {
     return parseFloat(((this.temperature * 9) / 5 + 32).toFixed(1));
   }
 

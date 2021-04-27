@@ -1,5 +1,4 @@
-import { makeAutoObservable, toJS } from 'mobx';
-import { computed, action, observable, makeObservable } from 'mobx';
+import {  } from 'mobx';
 import { AppStore } from './index';
 
 import { LocationWeatherData } from './locationWeatherData';
@@ -10,10 +9,10 @@ const API_KEY = '3c2f7ac196cb4e2195ec564b5a6000eb';
 
 
 export class Temperature {
-  @observable isLoading = false;
-  @observable searchQuery = '';
+  isLoading = false;
+  searchQuery = '';
 
-  @observable weatherData: LocationWeatherData[] = [
+  weatherData: LocationWeatherData[] = [
     new LocationWeatherData({
       temperature: 15,
       location: 'Berlin, DE',
@@ -22,17 +21,18 @@ export class Temperature {
   ];
 
   constructor(public parentStore: typeof AppStore) {
-    makeAutoObservable(this);
+    // you may need this:
+    // makeAutoObservable(this);
   }
 
-  @action
+
   setGlobalScale(displayScale: TemperatureScale) {
     this.weatherData.forEach(data => {
       data.displayScale = displayScale
     });
   }
 
-  @computed get globalMode(): TemperatureScale | undefined {
+  get globalMode(): TemperatureScale | undefined {
     if (this.weatherData.every(d => d.displayScale === TemperatureScale.C)) return TemperatureScale.C;
 
     if (this.weatherData.every(d => d.displayScale === TemperatureScale.F)) return TemperatureScale.F;
@@ -40,7 +40,7 @@ export class Temperature {
     return undefined;
   }
 
-  @computed get temperatureF() {
+  get temperatureF() {
     return (this.weatherData[0].temperature * 9) / 5 + 32;
   }
 
@@ -63,13 +63,13 @@ export class Temperature {
       }
   }
 
-  @action
+
   handleResponseError = (error: string) => {
     this.parentStore.ui.locationFetchError = error;
     this.isLoading = false;
   }
 
-  @action setResponceData = (json: any) => {
+  setResponceData = (json: any) => {
     const location = json.name + ', ' + json.sys.country;
 
     const newData = new LocationWeatherData({
@@ -83,7 +83,7 @@ export class Temperature {
     this.isLoading = false;
   };
 
-  @action updateStateOnRequestStart() {
+  updateStateOnRequestStart() {
     this.parentStore.ui.locationFetchError = '';
     this.isLoading = true;
     this.searchQuery = this.parentStore.ui.locationInput;

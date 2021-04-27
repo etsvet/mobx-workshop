@@ -1,12 +1,12 @@
 import React from 'react';
 import {Button, ButtonGroup, Spinner} from "react-bootstrap";
-import {observer} from 'mobx-react';
+import {  } from 'mobx-react';
 
 import {LocationWeatherData} from '../stores/locationWeatherData';
 import {TemperatureScale} from '../stores/types';
 
 
-export const WeatherLocation = observer(({ data }: { data: LocationWeatherData}) => {
+export const WeatherLocation = ({ data }: { data: LocationWeatherData}) => {
   console.log('WeatherLocation rerenderd!')
 
   return (
@@ -45,4 +45,4 @@ export const WeatherLocation = observer(({ data }: { data: LocationWeatherData})
         </div>
       </li>
   )
-})
+}
