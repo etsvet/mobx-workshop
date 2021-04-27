@@ -40,8 +40,8 @@ export class Temperature {
 
   @action updateState() {
     this.isLoading = true;
-    this.location = this.parentStore.ui.input;
-    this.parentStore.ui.input = '';
+    this.location = this.parentStore.ui.locationInput;
+    this.parentStore.ui.locationInput = '';
   }
 
   handleSubmit = () => {

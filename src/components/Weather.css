@@ -11,7 +11,6 @@
     justify-content: space-evenly;
 }
 
-
 .temperature-container  p {
     margin: 0;
 }
@@ -21,10 +20,15 @@
 }
 
 .locations {
-    width: 50vw;
+    width: 75vw;
     padding: 2.5rem 1rem;
     border: 1px solid #1a1a1a;
     border-radius: 10px;
+}
+
+.locations-container {
+    display: flex;
+    flex-direction: column;
 }
 
 .locations__list { 
@@ -35,6 +39,26 @@
 
 .locations__item { 
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid #1a1a1a;
+    padding: 5px;
+}
+
+.locations__item .spinner-border {
+    margin-right: 5px
+}
+
+.global-temp-mode {
+    width: 200px;
+    align-self: flex-end;
+    margin: 5px;
+}
+
+.error-msg {
+    color: red;
+}
+
+.location-temp-mode {
+    margin-left: 10px;
 }

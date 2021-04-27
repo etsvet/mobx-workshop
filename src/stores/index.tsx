@@ -14,3 +14,6 @@ export class App {
 }
 
 export const AppStore = new App();
+
+
+(window as any).store = AppStore;
