@@ -7,7 +7,7 @@ import {TemperatureScale} from '../stores/types';
 
 
 export const WeatherLocation = ({ data }: { data: LocationWeatherData}) => {
-  console.log('WeatherLocation rerenderd!')
+  // trace(true);
 
   return (
       <li className="locations__item" key={data.location}>

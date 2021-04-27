@@ -5,6 +5,7 @@ import {storeContext} from "../App";
 
 
 export const LocationLoader = () => {
+  // trace(true);
   const store = useContext(storeContext);
 
   return (

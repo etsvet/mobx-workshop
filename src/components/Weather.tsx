@@ -9,6 +9,7 @@ import { LocationLoader } from './LocationLoader';
 import './Weather.css';
 
 export const WeatherComponent = () => {
+  // trace(true);
   const store = React.useContext(storeContext);
 
   const weatherStore = store.temperature;

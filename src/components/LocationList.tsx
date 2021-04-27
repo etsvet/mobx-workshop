@@ -13,6 +13,7 @@ interface LocationListProps {
 }
 
 export const LocationList = ({ locations }: LocationListProps) => {
+  // trace(true);
   const app = React.useContext(storeContext);
   const globalMode = app.temperature.globalMode;
 

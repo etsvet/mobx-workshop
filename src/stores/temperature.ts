@@ -33,15 +33,12 @@ export class Temperature {
   }
 
   get globalMode(): TemperatureScale | undefined {
+    // trace(true);
     if (this.weatherData.every(d => d.displayScale === TemperatureScale.C)) return TemperatureScale.C;
 
     if (this.weatherData.every(d => d.displayScale === TemperatureScale.F)) return TemperatureScale.F;
 
     return undefined;
-  }
-
-  get temperatureF() {
-    return (this.weatherData[0].temperature * 9) / 5 + 32;
   }
 
   async getWeatherData() {

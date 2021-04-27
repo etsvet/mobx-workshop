@@ -29,6 +29,7 @@ export class LocationWeatherData implements WeatherData {
   public setDisplayScale = (displayScale: TemperatureScale) => this.displayScale = displayScale;
 
   get tempInF(): number {
+    // trace(true);
     return parseFloat(((this.temperature * 9) / 5 + 32).toFixed(1));
   }
 
