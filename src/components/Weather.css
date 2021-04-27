@@ -62,3 +62,9 @@
 .location-temp-mode {
     margin-left: 10px;
 }
+
+.location-loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
