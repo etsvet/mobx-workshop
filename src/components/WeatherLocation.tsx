@@ -13,7 +13,6 @@ export const WeatherLocation = observer(({ data }: { data: LocationWeatherData})
       <li className="locations__item" key={data.location}>
         <span>{data.location} </span>
         <span>{data.displayScale === TemperatureScale.C ? data.temperature + " ˚C" : data.tempInF + " ˚F"} </span>
-        {/*<span>{data.description} </span>*/}
 
         <div>
           <Button variant={data.isLoading ? 'secondary' : 'primary'} onClick={data.isLoading ? undefined : data.update}>

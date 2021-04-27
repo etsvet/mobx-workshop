@@ -1,6 +1,5 @@
-import React, {useState, createContext } from 'react';
-import logo from './logo.svg';
-import {Jumbotron, Nav, Tab, Tabs} from 'react-bootstrap';
+import React from 'react';
+import { Jumbotron } from 'react-bootstrap';
 import { AppStore } from './stores';
 import { WeatherPage } from './pages/'
 
@@ -9,9 +8,6 @@ import './App.css';
 
 
 export const storeContext = React.createContext(AppStore);
-
-
-
 
 function App() {
   return (
